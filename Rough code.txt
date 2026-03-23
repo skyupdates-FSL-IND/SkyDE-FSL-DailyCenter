@@ -1,0 +1,323 @@
+<!-- Glassmorph iOS Toggle (Light/Dark) -->
+<div class="cc-theme-toggle" id="ccThemeToggleWrap" title="Toggle light/dark">
+  <input type="checkbox" id="ccThemeSwitch" aria-label="Toggle dark mode" />
+  <label for="ccThemeSwitch" class="ios-switch">
+    <span class="knob">
+      <!-- optional moon/sun glyphs; kept minimal -->
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="currentColor"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a8.9 8.9 0 0 0 0 18 9 9 0 1 1 0-18z" fill="currentColor"/></svg>
+    </span>
+  </label>
+</div>
+
+
+
+<main id="main" tabindex="-1">
+
+  <!-- SECTION: Spare (future features) -->
+  <section id="spare" class="page-section">
+    <div class="container">
+      <header class="page-section__header">
+        <h2>Spare</h2>
+        <p class="lead">
+          Reserved area for future widgets, announcements, or experimental features.
+        </p>
+      </header>
+
+      <!-- Example placeholder block -->
+      <div class="card">
+        <h3>Coming Soon</h3>
+        <p>Use this space to prototype a new module without affecting the main sections.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: Content -->
+  <section id="content" class="page-section">
+    <div class="container">
+      <header class="page-section__header">
+        <h2>Content</h2>
+        <p class="lead">Guidelines, tone, checklists, and examples to keep messaging consistent.</p>
+      </header>
+
+      <!-- Optional accordion (details/summary is accessible by default) -->
+      <div class="accordion">
+        <details class="accordion-item" open data-default-open>
+          <summary><span>Voice &amp; Tone</span></summary>
+          <div class="accordion-panel">
+            <ul>
+              <li>Use clear, friendly, concise language; prefer active voice.</li>
+              <li>Avoid jargon; keep sentences &lt; 20 words where possible.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary><span>Publishing Checklist</span></summary>
+          <div class="accordion-panel">
+            <ol>
+              <li>Proofread &amp; run spell-check</li>
+              <li>Validate links and screenshots</li>
+              <li>Add a “Common mistakes” block</li>
+              <li>Update the Revision Log</li>
+            </ol>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: FYI -->
+  <section id="fyi" class="page-section">
+    <div class="container">
+      <header class="page-section__header">
+        <h2>FYI</h2>
+        <p class="lead">Announcements, updates, and revision history.</p>
+      </header>
+
+      <ul class="timeline">
+        <li><strong>Mar 2026:</strong> Site scaffold created (nav + search + theme toggle + gradient border).</li>
+        <li><strong>Mar 2026:</strong> Added dotted background with subtle scroll gradient.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SECTION: Tech -->
+  <section id="tech" class="page-section">
+    <div class="container">
+      <header class="page-section__header">
+        <h2>Tech</h2>
+        <p class="lead">Environment, deployment, troubleshooting.</p>
+      </header>
+
+      <div class="accordion">
+        <details class="accordion-item" open data-default-open>
+          <summary><span>Environment Setup</span></summary>
+          <div class="accordion-panel">
+            <pre class="code-block">$ git clone https://github.com/your/repo.git
+$ cd repo
+$ npm ci
+$ npm run dev</pre>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary><span>Deployment</span></summary>
+          <div class="accordion-panel">
+            <ol>
+              <li>Run tests: <code>npm test</code></li>
+              <li>Build: <code>npm run build</code></li>
+              <li>Tag &amp; push: <code>git tag vX.Y.Z &amp;&amp; git push --tags</code></li>
+            </ol>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+new toggle button switch 
+
+HTML
+<div class="wrapper">
+  <div class="toggle">
+    <input class="toggle-input" type="checkbox" />
+    <div class="toggle-bg"></div>
+    <div class="toggle-switch">
+      <div class="toggle-switch-figure"></div>
+      <div class="toggle-switch-figureAlt"></div>
+    </div>  
+  </div>
+</div>
+
+css
+
+/*
+F5EB42 - sun inner
+E4C74D - sun outer
+FFFFFF - cloud inner
+D4D4D2 - cloud outer
+81C0D5 - parent outer
+C0E6F6 - parent inner
+FFFDF2 - moon inner
+DEE1C5 - moon outer
+FCFCFC - stars
+*/
+
+body {
+  background-color: #F3F3F3;
+}
+
+.wrapper {
+  padding-top: 40px;
+  text-align: center;
+}
+
+/////////////////////////////////////////////////
+// Mixins
+/////////////////////////////////////////////////
+@mixin crater($top, $left, $size) {
+  content: '';
+  position: absolute;
+  top: $top;
+  left: $left;
+  width: $size;
+  height: $size;
+  background-color: #EFEEDA;
+  border-radius: 100%;
+  border: 4px solid #DEE1C5;
+}
+
+@mixin cloudBubble($top, $right, $width, $height, $deg) {
+  content: '';
+  display: block;
+  position: relative;
+  top: $top;
+  right: $right;
+  width: $width;
+  height: $height;
+  border: 8px solid #D4D4D2;
+  border-radius: 100%;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  transform: rotateZ($deg);
+  background-color: #fff;
+}
+
+/////////////////////////////////////////////////
+// Day State
+/////////////////////////////////////////////////
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  margin-left: 100px;
+  padding: 4px;  
+  border-radius: 40px;
+}
+
+.toggle:before,
+.toggle:after {
+  content: '';
+  display: table;
+}
+
+.toggle:after {
+  clear: both;
+}
+
+.toggle-bg {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 100%;  
+  height: 100%;
+  background-color: #C0E6F6;
+  border-radius: 40px;
+  border: 4px solid #81C0D5;
+  transition: all .1s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+}
+
+.toggle-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;  
+  height: 100%;
+  border: 1px solid red;
+  border-radius: 40px;
+  z-index: 2;
+  opacity: 0;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin-left: 50px;
+  background-color: #F5EB42;
+  border: 4px solid #E4C74D;
+  border-radius: 50%;
+  transition: all .1s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+}
+
+.toggle-switch-figure {  
+  position: absolute;
+  bottom: -14px;
+  left: -50px;
+  display: block;
+  width: 80px;
+  height: 30px;
+  border: 8px solid #D4D4D2;
+  border-radius: 20px;  
+  background-color: #fff;
+  transform: scale(0.4);
+  transition: all .12s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  &:after {
+    @include cloudBubble(-65px, -42px, 15px, 15px, 70deg);
+  }
+  &:before {
+    @include cloudBubble(-25px, -10px, 30px, 30px, 30deg);
+  }
+}
+
+.toggle-switch-figureAlt {
+  @include crater(5px, 2px, 2px);
+  
+  box-shadow: 
+    42px -7px 0 -3px #FCFCFC,
+    75px -10px 0 -3px #FCFCFC,
+    54px 4px 0 -4px #FCFCFC,
+    83px 7px 0 -2px #FCFCFC,
+    63px 18px 0 -4px #FCFCFC,
+    44px 28px 0 -2px #FCFCFC,
+    78px 23px 0 -3px #FCFCFC;
+  
+  transition: all .12s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  transform: scale(0);
+}
+
+.toggle-switch-figureAlt:before {
+  @include crater(-6px, 18px, 7px);
+}
+
+.toggle-switch-figureAlt:after {
+  @include crater(19px, 15px, 2px);
+}
+
+/////////////////////////////////////////////////
+// Night State
+/////////////////////////////////////////////////
+.toggle-input:checked ~ .toggle-switch {
+  margin-left: 0;
+  border-color: #DEE1C5;
+  background-color: #FFFDF2;
+}
+
+.toggle-input:checked ~ .toggle-bg {
+  background-color: #484848;
+  border-color: #202020;
+}
+
+.toggle-input:checked ~ .toggle-switch .toggle-switch-figure {
+  margin-left: 40px;
+  opacity: 0;
+  transform: scale(0.1);
+}
+
+.toggle-input:checked ~ .toggle-switch .toggle-switch-figureAlt {
+  transform: scale(1);
+}
+
+
+JavaScript
+
+const toggle = document.querySelector('.toggle-input');
+const initialState = localStorage.getItem('toggleState') == 'true';
+toggle.checked = initialState;
+
+toggle.addEventListener('change', function() {
+  localStorage.setItem('toggleState', toggle.checked);
+});

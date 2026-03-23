@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky Updates</title>
+    
+    <!-- Favicon for browser tab -->
+    <link rel="icon" type="image/x-icon" href="Assests/logo-sky-removebg.png">
+
+    <!-- Google Fonts for Antigravity-like UI -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script> -->
+    <link rel="stylesheet" href="style.css">
+    <script defer src = "script.js"></script>
+    
+</head>
+<body>
+   <header class="cc-header" role="banner">
+    <div class="cc-bar">
+      <div class="cc-container cc-nav-row">
+
+        <!-- Left: Logo -->
+        <a class="cc-brand" href="/" aria-label="Home">
+          <!-- “code” boxed + brand text; replace with your SVG/text if you have a logo -->
+          <span class="cc-logo-box">Sky</span><span class="cc-logo-text">Updates</span>
+          <!-- If you want a single-word brand, use: <span class="cc-logo-box">Ref</span><span class="cc-logo-text">Hub</span> -->
+        </a>
+
+        <!-- Mobile menu toggle -->
+        <button class="cc-icon-btn cc-menu-toggle" id="ccMenuToggle"
+                aria-label="Open menu" aria-expanded="false" aria-controls="ccPrimaryNav">
+          <span class="cc-burger" aria-hidden="true"></span>
+        </button>
+
+        <!-- Center: Primary Nav -->
+        <nav id="ccPrimaryNav" class="cc-primary-nav" aria-label="Primary">
+          <ul class="cc-nav-list">
+          
+            <!-- Single links -->
+            <li><a class="cc-link" href="#fyi">Fyi</a></li>
+            <li><a class="cc-link" href="#content">Content</a></li>
+            <li><a class="cc-link" href="#tech">Tech</a></li>
+            
+            <!-- 🔽 Add this new list item -->
+              <li class="cc-nav-toggle">
+                <div class="toggle" id="ccThemeToggleWrap" title="Toggle light/dark">
+                  <input class="toggle-input" id="ccThemeSwitch" type="checkbox" aria-label="Toggle dark mode" />
+                  <div class="toggle-bg"></div>
+                  <div class="toggle-switch">
+                    <div class="toggle-switch-figure"></div>
+                    <div class="toggle-switch-figureAlt"></div>
+                  </div>  
+                </div>
+              </li>
+              
+
+          </ul>
+
+
+
+        </nav>
+          <!-- SEARCH: icon + expanding input -->
+            <div class="cc-search-wrap" id="ccSearchWrap">
+                  <button class="cc-icon-btn cc-search-btn" id="ccSearchBtn"
+                          type="button"
+                          aria-label="Search"
+                          aria-expanded="false"
+                          aria-controls="ccSearchInput">
+                          <!-- Icon -->
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"></circle>
+                        <path d="M20 20l-4.2-4.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+                      </svg>
+                  </button>
+ 
+              <label for="ccSearchInput" class="visually-hidden">Search</label>
+              <input
+                  type="search"
+                  id="ccSearchInput"
+                  class="cc-search-input"
+                  placeholder="Search…"
+                  autocomplete="off"
+                  spellcheck="false"
+                  inputmode="search"/>
+            </div>
+            
+          
+
+      
+      </div>
+  </div>
+</header>
+<!-- ======== /SITE NAVBAR ======== -->
+
+
+<!-- ======== MAIN SECTION OF HTML BODY WITH SECTIONS ======== -->
+
+
+
+<main id="main" tabindex="-1">
+
+  <!-- SECTION: Spare (future features) -->
+  <!-- <section id="spare" class="page-section">
+    <div class="container">
+      <header class="page-section__header">
+        <h2>Spare</h2>
+        <p class="lead">
+          Reserved area for future widgets, announcements, or experimental features.
+        </p>
+      </header> -->
+
+      <!-- Example placeholder block -->
+      <!-- <div class="card">
+        <h3>Coming Soon</h3>
+        <p>Use this space to prototype a new module without affecting the main sections.</p>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- SECTION: Important Flashcard -->
+  <section id="important-news" class="page-section" style="padding-bottom: 0;">
+    <div class="container" id="flashcard-container">
+      <div class="flashcard">
+        <h2 class="flashcard-title">Important</h2>
+        <p class="flashcard-text">
+          <strong>Crucial News:</strong> Review the latest Hotline rules and Account Hacked protocol before taking any calls today. Stay updated!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: FYI -->
+  <section id="fyi" class="page-section">
+    <div class="container">
+      <header class="page-section__header">
+        <h2>Fyi</h2>
+        <p class="lead">Announcements, updates, and revision history</p>
+      </header>
+
+      <!-- <ul class="timeline">
+        <li><strong>Mar 2026:</strong> All Sky updates will be here soon stay tuned</li>
+        <li><strong>Mar 2026:</strong> Ensure to adhere to process and updates.</li>
+      </ul> -->
+
+      <div class="accordion">
+        <details class="accordion-item">
+          <summary><span>Hotline Update &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 23-03-2026</span></summary>
+          <div class="accordion-panel">
+            <strong>Hotline department colleagues have exactly the same access that we have.
+            <br><br>
+            In such a case, why to share hotline number to our customers ?
+            <br>
+            To achieve the target of 74% Solution rate, the objective should be to resolve all queries and not to give the
+            customer a chance to come back for the same concern.
+            <br><br>
+            Well, this is exactly what customer service is, right ?
+            <br>
+            <br>
+            Note: Hotline numbers or any links should never be shared with the customers as it can lead to an escalation.
+          </strong> 
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary><span>Account Hacked &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 23-03-2026</span></summary>
+          <div class="accordion-panel">
+            <strong>How to deal with customers whose account was hacked ?
+            <br><br>In such cases, do not make any changes in the contract i.e. do not try to resolve the concern immediately.
+            <br>
+        
+            Simply ask the customers to send an E-Mail to betrugsbearbeitung@sky.de stating the exact issue.
+            <br><br>
+            This backend team will be prioritizing such cases and will respond to the customers with the correct resolution.
+            <br>
+        
+          </strong>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary><span>NCRM Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 23-03-2026</span></summary>
+          <div class="accordion-panel">
+            <strong>NCRM Value Chats
+            <br><br>It is important to retain NCRM customers. Just like Siebel customers, our objective should be to either extend their
+            contracts or convince them not to cancel it.
+            <br><br>
+            It is mandatory to handle the objection twice along with stating the benefits of the customer’s current contract.
+            <br><br>
+            Target for CanX is 25%.
+            <br><br>
+            
+            Note: Many advisors are achieving this target. If they can, so do you !!
+
+          </strong>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary><span>Publishing Checklist</span></summary>
+          <div class="accordion-panel">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, sunt. Ipsa porro quidem commodi aspernatur quam cum optio doloribus illo, perferendis voluptatem quaerat neque a culpa quod aperiam praesentium illum.
+            Pariatur tenetur dicta inventore debitis natus dolor ullam, repellat est veritatis, dolore impedit doloribus et nemo quis deleniti quae dolorum vel quod omnis ut, blanditiis dolores. Quasi voluptates iure error?
+            Quibusdam optio ad nulla, voluptates excepturi asperiores temporibus accusamus quo earum rem! Alias facilis porro, accusamus eius autem incidunt voluptas rerum, aliquam libero esse, aliquid debitis vitae iste rem tenetur!
+            Omnis, quod in amet dignissimos unde cupiditate ratione, nobis quae quos cum dolore maxime nisi iusto adipisci dolorem distinctio? Modi, sit? Iure nisi officiis libero esse doloribus eius? Quibusdam, exercitationem?</p>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary><span>Publishing Checklist</span></summary>
+          <div class="accordion-panel">
+            <ol>
+              <li>Proofread &amp; run spell-check</li>
+              <li>Validate links and screenshots</li>
+              <li>Add a “Common mistakes” block</li>
+              <li>Update the Revision Log</li>
+            </ol>
+          </div>
+        </details>
+
+        
+      </div>
+
+
+    </div>
+    
+  </section>
+
+  
+
+  <!-- SECTION: Performance -->
+  <section id="content" class="page-section">
+    <div class="container">
+      <header class="page-section__header">
+        <h2>Performance</h2>
+        <p class="lead">March'26 Performance dash</p>
+      </header>
+
+      <!-- Optional accordion (details/summary is accessible by default) -->
+      <div class="accordion" id="performance-accordion-container">
+        <details class="accordion-item">
+          <summary><span>Hyderabad</span></summary>
+          <div class="accordion-panel">
+
+            <table border="1" style="text-align: center;">
+                      <tr>
+                        <th></th>
+                        <th>NPS</th>
+                        <th>solution Rate</th>
+                        <th>RCR</th>
+                        <th>Transfer Rate</th>
+                        <th>CanX NCRM</th>
+                        <th>CanX Siebel</th>
+                        <th>Upsell</th>
+                      </tr>
+                      <tr>
+                        <td>Actuals</td>
+                        <td>53</td>
+                        <td>68.60%</td>
+                        <td>30.90%</td>
+                        <td>2.90%</td>
+                        <td>32%</td>
+                        <td>16%</td>
+                        <td>3.0%</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Targets</td>
+                        <td>65</td>
+                        <td>72.00%</td>
+                        <td>28.0%</td>
+                        <td>2.50%</td>
+                        <td>28.0%</td>
+                        <td>18%</td>
+                        <td>3.20%</td>
+                      </tr>
+                 </table> 
+
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary><span>Bangalore</span></summary>
+          <div class="accordion-panel">
+            <table border="1" style="text-align: center;">
+                      <tr>
+                        <th></th>
+                        <th>NPS</th>
+                        <th>solution Rate</th>
+                        <th>RCR</th>
+                        <th>Transfer Rate</th>
+                        <th>CanX NCRM</th>
+                        <th>CanX Siebel</th>
+                        <th>Upsell</th>
+                      </tr>
+                      <tr>
+                        <td>Actuals</td>
+                        <td>55</td>
+                        <td>67.20%</td>
+                        <td>31.40%</td>
+                        <td>3.70%</td>
+                        <td>34%</td>
+                        <td>14%</td>
+                        <td>1.80%</td>
+                      </tr>
+                      <tr>
+                        <td>Targets</td>
+                        <td>65</td>
+                        <td>72.00%</td>
+                        <td>28.0%</td>
+                        <td>2.50%</td>
+                        <td>28.0%</td>
+                        <td>18%</td>
+                        <td>3.20%</td>
+                      </tr>
+                 </table>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SECTION: Tech -->
+  <!-- <section id="tech" class="page-section">
+    <div class="container">
+      <header class="page-section__header">
+        <h2>Tech</h2>
+        <p class="lead">Analyse, Research, troubleshoot</p>
+      </header>
+
+      <div class="accordion">
+        <details class="accordion-item">
+          <summary><span>Technology updates</span></summary>
+          <div class="accordion-panel">
+            <pre class="code-block">$ git clone https://github.com/your/repo.git
+                $ cd repo
+                $ npm ci
+                $ npm run dev
+            </pre>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary><span>New Tech updates</span></summary>
+          <div class="accordion-panel">
+            <ol>
+              <li>Run tests: <code>npm test</code></li>
+              <li>Build: <code>npm run build</code></li>
+              <li>Tag &amp; push: <code>git tag vX.Y.Z &amp;&amp; git push --tags</code></li>
+            </ol>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section> -->
+
+</main>
+
+<!-- ======== FOOTER ======== -->
+<footer class="cc-footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="https://www.sky.de/" target="_blank" class="cc-link">About Us</a>
+      <a href="https://www.sky.de/kontakt-hilfe" target="_blank" class="cc-link">Contact</a>
+    </div>
+    <div class="footer-copyright">
+      &copy; <img src="Assests/logo-sky-removebg.png" alt="Sky" class="footer-logo-inline"> and the Sky brands are trademarks of Sky Limited and are used under license.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
