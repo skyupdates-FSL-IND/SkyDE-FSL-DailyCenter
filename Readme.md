@@ -78,6 +78,18 @@ If the `GOOGLE_SHEET_ID` is left empty, the website gracefully defaults to displ
 
 ---
 
+## 🛠 Technical Breakdown: How the Google Sheet Integration Works (For Developers)
+
+This section explains how the code in `script.js` turns a public Google Sheet into a lightweight programmatic database.
+
+1. **The Target URL:** We use an older Google API endpoint called the `Google Visualization Query API` (`/gviz/tq`). By passing `tqx=out:json` into the URL alongside a cache-busting timestamp (`&t=...`), Google returns the spreadsheet data as JSON instead of a rendered HTML table.
+2. **The Cleanup:** Google wraps the data inside a function call (similar to JSONP). Once fetched natively via `fetch()`, the outer text wrapper is sliced off using `.substring(47).slice(0, -2)` to isolate pure, parsable JSON.
+3. **Data Mapping & Key Normalization:** We read the headers Google outputs and normalize them through a robust fallback map. A regex replace (`.replace(/\s+/g, '_')`) perfectly maps any column names containing whitespace (e.g., `Solution Rate`) into safe, lowercase javascript keys (e.g., `solution_rate`).
+4. **Building JavaScript Objects:** We map the data cells to the normalized headers so that each row in the sheet becomes a usable JavaScript object: `{ type: 'fyi', title: 'Example', solution_rate: '68%' ... }`.
+5. **Dynamic DOM Generation:** Finally, `renderDynamicContent(data)` iterates through this object array. It runs `.innerHTML = ''` on the fallback containers and dynamically constructs `div`, `details`, and `table` DOM elements using `document.createElement()`, injecting the content directly onto the page!
+
+---
+
 
 ## 📁 File Structure
 - `index.html`: The core presentation layer. Includes the Navbar (with sticky effect), Theme Toggle Switch, Search Expander, and the active Main Content Sections (`#important-news`, `#fyi` and `#content`). Note: The `#tech` section has been commented out for now.
