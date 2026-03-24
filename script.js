@@ -289,7 +289,8 @@ function renderDynamicContent(data) {
   const perfData = {};
 
   data.forEach(item => {
-    const type = (item.type || '').toLowerCase().trim();
+    // Strip backticks in case non-coders copy-pasted markdown formatting from README
+    const type = (item.type || '').toLowerCase().replace(/`/g, '').trim();
     const title = item.title || '';
     const content = item.content || '';
     const date = item.date || '';
@@ -320,7 +321,8 @@ function renderDynamicContent(data) {
       fyiContainer.appendChild(details);
     }
     else if (type === 'performance') {
-      const rowType = (item['row type'] || '').toLowerCase(); // "actuals" or "targets"
+      // Strip backticks here too
+      const rowType = (item['row type'] || '').toLowerCase().replace(/`/g, '').trim(); // "actuals" or "targets"
       if (!title) return; // Need a city name (title)
       
       if (!perfData[title]) perfData[title] = {};
