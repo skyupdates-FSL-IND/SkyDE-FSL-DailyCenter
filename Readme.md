@@ -185,6 +185,9 @@ The layout adapts via standard `@media` breakpoints at the end of `style.css`:
 ---
 
 ## 🐞 Troubleshooting Exceptions
+- **I updated the Spreadsheet but my Live Website isn't updating?**
+  - **Browser Cache**: Your browser saves website assets like `script.js` to save bandwidth. Always do a **Hard Refresh** (`CTRL + F5` on Windows, or `CMD + SHIFT + R` on Mac) to force the browser to grab your newly updated code.
+  - **Google Sheets Sync**: Google delays generating their live endpoints by ~1 to 5 minutes natively. However, our script uses strict "Cache-Busting" techniques to force immediate loads!
 - **Animated gradient border feels choppy?** The effect is powered by an `::before` pseudo element under `.cc-bar`. Ensure GPU acceleration isn't bogged down by immense DOMs.
 - **Search input won't focus?** The input technically expands visually across multiple frames. If focus fails, verify `requestAnimationFrame` exists in the `openSearch()` JS function. 
 
