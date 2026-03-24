@@ -238,7 +238,7 @@ async function loadDynamicContent() {
 
   // Google Visualization API returns JSON wrapped in a function call
   // We append timestamp '&t=...' to bust browser caches so live updates work!
-  const url = `https://docs.google.com/spreadsheets/d/${GOOGLE_SHEET_ID}/gviz/tq?tqx=out:json&headers=1&t=${new Date().getTime()}`;
+  const url = `https://docs.google.com/spreadsheets/d/${GOOGLE_SHEET_ID}/gviz/tq?tqx=out:json&t=${new Date().getTime()}`;
 
   try {
     // Add cache: 'no-store' to ensure recent changes are pulled natively
@@ -249,11 +249,14 @@ async function loadDynamicContent() {
     const json = JSON.parse(jsonStr);
 
     // 1. Extract headers. If Google failed to map them to 'label', use the first data row.
-    let cols = json.table.cols.map(c => c && c.label ? c.label.toString().toLowerCase().trim() : '');
+    let cols = json.table.cols.map(c => c && c.label ? c.label.toString().toLowerCase().trim().replace(/\s+/g, '_') : '');
     let rowsToParse = json.table.rows;
 
     if (cols.every(c => c === '') && rowsToParse.length > 0) {
-      cols = rowsToParse[0].c.map(cell => cell && cell.v ? cell.v.toString().toLowerCase().trim() : '');
+      cols = rowsToParse[0].c.map(cell => {
+        if (!cell || !cell.v) return '';
+        return cell.v.toString().toLowerCase().trim().replace(/\s+/g, '_');
+      });
       rowsToParse = rowsToParse.slice(1); // skip headers row
     }
 
@@ -267,6 +270,9 @@ async function loadDynamicContent() {
       });
       return obj;
     });
+
+    console.log("COLUMNS:", cols);
+    console.log("DATA:", data);
 
     renderDynamicContent(data);
   } catch (err) {
@@ -322,17 +328,17 @@ function renderDynamicContent(data) {
     }
     else if (type === 'performance') {
       // Strip backticks here too
-      const rowType = (item['row type'] || '').toLowerCase().replace(/`/g, '').trim(); // "actuals" or "targets"
+      const rowType = (item.row_type || '').toLowerCase().replace(/`/g, '').trim(); // "actuals" or "targets"
       if (!title) return; // Need a city name (title)
       
       if (!perfData[title]) perfData[title] = {};
       perfData[title][rowType] = {
         nps: item.nps || '',
-        solution: item['solution rate'] || '',
+        solution: item.solution_rate || '',
         rcr: item.rcr || '',
-        transfer: item['transfer rate'] || '',
-        canx_ncrm: item['canx ncrm'] || '',
-        canx_siebel: item['canx siebel'] || '',
+        transfer: item.transfer_rate || '',
+        canx_ncrm: item.canx_ncrm || '',
+        canx_siebel: item.canx_siebel || '',
         upsell: item.upsell || ''
       };
     }
