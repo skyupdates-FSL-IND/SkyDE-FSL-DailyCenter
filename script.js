@@ -238,7 +238,7 @@ async function loadDynamicContent() {
 
   // Google Visualization API returns JSON wrapped in a function call
   // We append timestamp '&t=...' to bust browser caches so live updates work!
-  const url = `https://docs.google.com/spreadsheets/d/${GOOGLE_SHEET_ID}/gviz/tq?tqx=out:json&t=${new Date().getTime()}`;
+  const url = `https://docs.google.com/spreadsheets/d/${GOOGLE_SHEET_ID}/gviz/tq?tqx=out:json&headers=1&t=${new Date().getTime()}`;
 
   try {
     // Add cache: 'no-store' to ensure recent changes are pulled natively
@@ -261,11 +261,18 @@ async function loadDynamicContent() {
     }
 
     // 2. Reconstruct array of objects mapped to those headers
+    //    Prefer cell.f (formatted string e.g. "68.20%") over cell.v (raw number e.g. 0.682)
     const data = rowsToParse.map(row => {
       const obj = {};
       cols.forEach((col, i) => {
         if (col) {
-          obj[col] = row.c && row.c[i] && row.c[i].v !== null && row.c[i].v !== undefined ? row.c[i].v : '';
+          const cell = row.c && row.c[i] ? row.c[i] : null;
+          if (!cell || cell.v === null || cell.v === undefined) {
+            obj[col] = '';
+          } else {
+            // Use formatted value (cell.f) for numbers/percentages, fall back to raw value
+            obj[col] = cell.f !== null && cell.f !== undefined ? cell.f : cell.v;
+          }
         }
       });
       return obj;
